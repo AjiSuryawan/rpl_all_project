@@ -18,23 +18,27 @@
 
         <!-- TextView Nama Mahasiwa -->
         <TextView
+            android:text="nama"
             android:id="@+id/txt_nama_mahasiswa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <!-- TextView Npm Mahasiswa -->
         <TextView
+            android:text="nim"
             android:id="@+id/txt_npm_mahasiswa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <!-- TextView NoHp Mahasiswa -->
         <TextView
+            android:text="no hp"
             android:id="@+id/txt_nohp_mahasiswa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <!-- TextView NoHp Mahasiswa -->
         <TextView
+            android:text="email"
             android:id="@+id/txtemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

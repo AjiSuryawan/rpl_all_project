@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class Mahasiswa {
     private String nama;
-    private String npm;
+    private String nim;
     private String nohp;
 
     public String getEmail() {
@@ -15,9 +15,9 @@ public class Mahasiswa {
 
     private String email;
 
-    public Mahasiswa(String nama, String npm, String nohp, String email) {
+    public Mahasiswa(String nama, String nim, String nohp, String email) {
         this.nama = nama;
-        this.npm = npm;
+        this.nim = nim;
         this.nohp = nohp;
         this.email = email;
     }
@@ -30,12 +30,12 @@ public class Mahasiswa {
         this.nama = nama;
     }
 
-    public String getNpm() {
-        return npm;
+    public String getNim() {
+        return nim;
     }
 
-    public void setNpm(String npm) {
-        this.npm = npm;
+    public void setNim(String nim) {
+        this.nim = nim;
     }
 
     public String getNohp() {

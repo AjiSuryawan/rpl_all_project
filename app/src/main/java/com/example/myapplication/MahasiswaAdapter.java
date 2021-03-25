@@ -22,14 +22,15 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.Maha
     public MahasiswaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.itemview, parent, false);
+        // method ini gunanya untuk menghubungkan ke layout itemview
         return new MahasiswaViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MahasiswaViewHolder holder, int position) {
+        // 0 : Ani , 1 : Budi
         holder.txtNama.setText(dataList.get(position).getNama());
-        // 1 -> nama : cen , npm : 000 , no hp : xxx , email : xxx
-        holder.txtNpm.setText(dataList.get(position).getNpm());
+        holder.txtNpm.setText(dataList.get(position).getNim());
         holder.txtNoHp.setText(dataList.get(position).getNohp());
         holder.txtemail.setText(dataList.get(position).getEmail());
     }

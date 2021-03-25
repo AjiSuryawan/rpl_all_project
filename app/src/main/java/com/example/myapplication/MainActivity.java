@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MahasiswaAdapter adapter;
     private ArrayList<Mahasiswa> mahasiswaArrayList;
+    // we user ArrayList to populate data in RecyclerView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
     void addData(){
         mahasiswaArrayList = new ArrayList<>();
         mahasiswaArrayList.add(new Mahasiswa("Dimas Maulana", "999", "081222","email"));
-        mahasiswaArrayList.add(new Mahasiswa("Cen", "000", "081222", "email"));
-        mahasiswaArrayList.add(new Mahasiswa("budi", "222", "083333", "email budi"));
+        mahasiswaArrayList.add(new Mahasiswa("Budi", "000", "081222", "email"));
+        mahasiswaArrayList.add(new Mahasiswa("Ani", "222", "083333", "email budi"));
+        Mahasiswa Sari = new Mahasiswa("Sari", "xxx" , "000", "sari@gmail.com");
+        mahasiswaArrayList.add(Sari);
     }
 }
