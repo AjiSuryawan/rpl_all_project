@@ -5,16 +5,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.MahasiswaViewHolder> {
+import javax.security.auth.callback.Callback;
 
+public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.MahasiswaViewHolder> {
+    private Callback callback;
 
     private ArrayList<Mahasiswa> dataList;
 
-    public MahasiswaAdapter(ArrayList<Mahasiswa> dataList) {
+    interface Callback {
+        void onClick(int position);
+    }
+
+    public MahasiswaAdapter(ArrayList<Mahasiswa> dataList , Callback callback) {
+        this.callback = callback;
         this.dataList = dataList;
     }
 
@@ -43,6 +51,7 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.Maha
 
     public class MahasiswaViewHolder extends RecyclerView.ViewHolder{
         private TextView txtNama, txtNpm, txtNoHp , txtemail;
+        CardView cardku;
 
         public MahasiswaViewHolder(View itemView) {
             super(itemView);
@@ -50,6 +59,13 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.Maha
             txtNpm = (TextView) itemView.findViewById(R.id.txt_npm_mahasiswa);
             txtNoHp = (TextView) itemView.findViewById(R.id.txt_nohp_mahasiswa);
             txtemail = (TextView) itemView.findViewById(R.id.txtemail);
+            cardku = (CardView)itemView.findViewById(R.id.cardku);
+            cardku.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callback.onClick(getAdapterPosition());
+                }
+            });
         }
     }
 }

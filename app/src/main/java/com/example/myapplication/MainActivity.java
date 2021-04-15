@@ -9,6 +9,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -34,7 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         addData();
 
-        adapter = new MahasiswaAdapter(mahasiswaArrayList);
+        adapter = new MahasiswaAdapter(mahasiswaArrayList, new MahasiswaAdapter.Callback() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(MainActivity.this, "cek klik", Toast.LENGTH_SHORT).show();
+            }
+        });
         //selesai ngatur data dari adapter, kemudian di tempel ke Recyclerview nya
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(layoutManager);
