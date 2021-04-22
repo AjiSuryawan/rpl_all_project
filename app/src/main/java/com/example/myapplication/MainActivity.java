@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -38,7 +39,14 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MahasiswaAdapter(mahasiswaArrayList, new MahasiswaAdapter.Callback() {
             @Override
             public void onClick(int position) {
-                Toast.makeText(MainActivity.this, "cek klik", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "click item "+position, Toast.LENGTH_SHORT).show();
+                Intent move = new Intent(getApplicationContext(),DetailActivity.class);
+                Mahasiswa mymahasiswa = mahasiswaArrayList.get(position);
+                move.putExtra("nama", mymahasiswa.getNama());
+                move.putExtra("nim", mymahasiswa.getNim());
+                move.putExtra("hp", mymahasiswa.getNohp());
+                move.putExtra("email", mymahasiswa.getEmail());
+                startActivity(move);
             }
         });
         //selesai ngatur data dari adapter, kemudian di tempel ke Recyclerview nya
