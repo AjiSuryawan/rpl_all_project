@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -96,7 +98,26 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.Maha
                     break;
 
                 case 2:
-                    //Do stuff
+                    //Delete data, butuh konfirmasi dialog
+                    AlertDialog.Builder builder = new AlertDialog.Builder(viewku.getContext());
+                    builder.setMessage("Are you sure you want to delete data?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dataList.remove(posku);
+                                    notifyDataSetChanged();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            })
+                            //Set your icon here
+                            .setTitle("Delete data")
+                            .setIcon(R.mipmap.ic_launcher);
+                    AlertDialog alert = builder.create();
+                    alert.show();//showing the dialog
 
                     break;
             }
