@@ -1,9 +1,13 @@
 package com.example.myapplication;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,8 +18,9 @@ import javax.security.auth.callback.Callback;
 
 public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.MahasiswaViewHolder> {
     private Callback callback;
-
     private ArrayList<Mahasiswa> dataList;
+    int posku;
+    View viewku;
 
     interface Callback {
         void onClick(int position);
@@ -49,12 +54,14 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.Maha
         return (dataList != null) ? dataList.size() : 0;
     }
 
-    public class MahasiswaViewHolder extends RecyclerView.ViewHolder{
+    public class MahasiswaViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         private TextView txtNama, txtNpm, txtNoHp , txtemail;
         CardView cardku;
 
         public MahasiswaViewHolder(View itemView) {
             super(itemView);
+            viewku=itemView;
+            itemView.setOnCreateContextMenuListener(this);
             txtNama = (TextView) itemView.findViewById(R.id.txt_nama_mahasiswa);
             txtNpm = (TextView) itemView.findViewById(R.id.txt_npm_mahasiswa);
             txtNoHp = (TextView) itemView.findViewById(R.id.txt_nohp_mahasiswa);
@@ -67,5 +74,33 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.Maha
                 }
             });
         }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            MenuItem Edit = menu.add(Menu.NONE, 1, 1, "Edit");
+            MenuItem Delete = menu.add(Menu.NONE, 2, 2, "Delete");
+            posku=getAdapterPosition();
+            Edit.setOnMenuItemClickListener(onlickcontextmenu);
+            Delete.setOnMenuItemClickListener(onlickcontextmenu);
+        }
     }
+
+    private final MenuItem.OnMenuItemClickListener onlickcontextmenu = new MenuItem.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+
+            switch (item.getItemId()) {
+                case 1:
+                    //Do stuff
+                    Toast.makeText(viewku.getContext(), "Edit data di posisi "+posku, Toast.LENGTH_SHORT).show();
+                    break;
+
+                case 2:
+                    //Do stuff
+
+                    break;
+            }
+            return true;
+        }
+    };
 }
